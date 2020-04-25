@@ -4,7 +4,7 @@ import { Gravatar } from 'react-native-gravatar'
 
 class Profile extends React.Component{
     logout = () => {
-
+        this.props.navigation.navigate('Auth')
     }
 
     render() {

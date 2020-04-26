@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     email: null
 }
 
-export default (action, state = INITIAL_STATE) => {
+export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case USER_LOGGED_IN:
             return {

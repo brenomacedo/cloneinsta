@@ -6,14 +6,22 @@ import Feed from './screens/Feed'
 import AddPhoto from './screens/AddPhoto'
 import Profile from './screens/Profile'
 import Login from './screens/Login'
+import Register from './screens/Register'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
 const StackComponent = () => (
-    <Stack.Navigator initialRouteName='Profile'>
+    <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen component={Login} name='Login' />
+        <Stack.Screen component={Register} name='Register' />
+    </Stack.Navigator>
+)
+
+const SwitchComponent = () => (
+    <Stack.Navigator headerMode='none' initialRouteName='Profile'>
         <Stack.Screen name='Profile' component={Profile} />
-        <Stack.Screen name='Auth' component={Login} />
+        <Stack.Screen name='Auth' component={StackComponent} />
     </Stack.Navigator>
 )
 
@@ -25,6 +33,6 @@ export default () => (
         <Tab.Screen options={{ tabBarIcon: ({ color }) => <Icon name='camera' color={color} size={25} />}}
         name='AddPhoto' component={AddPhoto} />
         <Tab.Screen options={{ tabBarIcon: ({ color }) => <Icon name='user' color={color} size={25} />}}
-        name='Profile' component={StackComponent} />
+        name='Profile' component={SwitchComponent} />
     </Tab.Navigator>
 )

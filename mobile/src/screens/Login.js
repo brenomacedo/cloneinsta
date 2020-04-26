@@ -23,7 +23,7 @@ class Login extends React.Component{
                 <TouchableOpacity onPress={this.login} style={styles.button}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {}} style={styles.button}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')} style={styles.button}>
                     <Text style={styles.buttonText}>Criar Nova Conta</Text>
                 </TouchableOpacity>
             </View>

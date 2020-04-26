@@ -19,7 +19,7 @@ const StackComponent = () => (
 )
 
 const SwitchComponent = () => (
-    <Stack.Navigator headerMode='none' initialRouteName='Profile'>
+    <Stack.Navigator headerMode='none' initialRouteName='Auth'>
         <Stack.Screen name='Profile' component={Profile} />
         <Stack.Screen name='Auth' component={StackComponent} />
     </Stack.Navigator>

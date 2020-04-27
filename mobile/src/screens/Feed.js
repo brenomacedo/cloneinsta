@@ -4,27 +4,6 @@ import Header from '../components/Header'
 import Post from '../components/Post'
 
 class Feed extends React.Component{
-    state = {
-        posts: [{
-            id: Math.random(),
-            nickname: 'Rafale Pereira Filho',
-            email: 'rafa@gmail.com',
-            image: require('../../assets/imgs/fence.jpg'),
-            comments: [{
-                nickname: 'John Rayman',
-                comment: 'Massa!'
-            }, {
-                nickname: 'Ana Julia',
-                comment: 'Incrivel!'
-            }]
-        }, {
-            id: Math.random(),
-            nickname: 'Francisco Leandro Lima',
-            email: 'filima@gmail.com',
-            image: require('../../assets/imgs/bw.jpg'),
-            comments: []
-        }]
-    }
 
     render() {
         return (

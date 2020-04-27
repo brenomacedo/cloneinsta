@@ -14,6 +14,10 @@ class Login extends React.Component{
 
     login = () => {
         this.props.onLogin({ ...this.state })
+        this.setState({
+            password: '',
+            email: ''
+        })
         this.props.navigation.navigate('Profile')
     }
 

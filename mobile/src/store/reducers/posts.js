@@ -33,7 +33,7 @@ export default (state = INITIAL_STATE, action) => {
         case ADD_COMMENT:
             return {
                 ...state,
-                posts: state.post.map(post => {
+                posts: state.posts.map(post => {
                     if (post.id === action.payload.postId) {
                         if (post.comments) {
                             post.comments = post.comments.concat(action.payload.comment)

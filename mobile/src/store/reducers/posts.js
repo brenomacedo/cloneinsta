@@ -1,4 +1,4 @@
-import { ADD_POST } from '../actionTypes'
+import { ADD_POST, ADD_COMMENT } from '../actionTypes'
 const INITIAL_STATE = {
     posts: [{
         id: Math.random(),
@@ -28,6 +28,20 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 posts: state.posts.concat({
                     ...action.payload
+                })
+            }
+        case ADD_COMMENT:
+            return {
+                ...state,
+                posts: state.post.map(post => {
+                    if (post.id === action.payload.postId) {
+                        if (post.comments) {
+                            post.comments = post.comments.concat(action.payload.comment)
+                        } else {
+                            post.comments = [action.payload.comment]
+                        }
+                    }
+                    return post
                 })
             }
         default:

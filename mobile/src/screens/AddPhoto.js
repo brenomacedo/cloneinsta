@@ -33,7 +33,7 @@ class AddPhoto extends React.Component{
             image: this.state.image,
             comments: [{
                 nickname: this.props.name,
-                comment: this.props.comment
+                comment: this.state.comment
             }]
         })
 

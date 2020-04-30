@@ -3,7 +3,6 @@ import { Text, View, Platform, Image, StyleSheet } from 'react-native'
 import Icon from '../../assets/imgs/icon.png'
 import { connect } from 'react-redux'
 import { Gravatar } from 'react-native-gravatar'
-import {  } from '../store/actions/user'
 
 class Header extends React.Component{
     render() {
@@ -16,7 +15,7 @@ class Header extends React.Component{
             <View style={styles.container} >
                 <View style={styles.rowContainer} >
                     <Image source={Icon} style={styles.image} />
-                    <Text style={styles.title}>Lambe Lambe</Text>
+                    <Text style={styles.title}>Felix Felix</Text>
                 </View>
                 <View style={styles.userContainer}>
                     <Text style={styles.user} >{name}</Text>
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily: 'shelter',
         height: 30,
-        fontSize: 28
+        fontSize: 22
     },
     userContainer: {
         flexDirection: 'row',

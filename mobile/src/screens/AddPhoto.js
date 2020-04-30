@@ -13,6 +13,17 @@ class AddPhoto extends React.Component{
         comment: ''
     }
 
+    componentDidUpdate = prevProps => {
+        if( prevProps.loading && !this.props.loading ) {
+            this.setState({
+                image: null,
+                comment: ''
+            })
+
+            this.props.navigation.navigate('Feed')
+        }
+    }
+
     pickImage = () => {
 
         if(!this.props.name) {
@@ -51,11 +62,6 @@ class AddPhoto extends React.Component{
             }]
         })
 
-        this.setState({
-            image: null,
-            comment: ''
-        })
-        this.props.navigation.navigate('Feed')
     }
 
     render() {
@@ -69,9 +75,12 @@ class AddPhoto extends React.Component{
                     <TouchableOpacity onPress={this.pickImage} style={styles.button}>
                         <Text style={styles.buttonText}>Escolha a foto</Text>
                     </TouchableOpacity>
-                    <TextInput editable={!!this.props.name} placeholder='Algum comentário para a foto?' style={styles.input} 
+                    <TextInput editable={!!this.props.name}
+                    placeholder='Algum comentário para a foto?' style={styles.input} 
                     value={this.state.comment} onChangeText={comment => this.setState({comment})} />
-                    <TouchableOpacity onPress={this.save} style={styles.button}>
+                    <TouchableOpacity onPress={this.save} style={[styles.button,
+                    this.props.loading ? styles.buttonDisabled : null]}
+                    disabled={this.props.loading}>
                         <Text style={styles.buttonText}>Salvar</Text>
                     </TouchableOpacity>
                 </View>
@@ -113,13 +122,17 @@ const styles = StyleSheet.create({
     input: {
         marginTop: 20,
         width: '90%'
+    },
+    buttonDisabled: {
+        backgroundColor: '#AAA'
     }
 })
 
 
 const mapStateToProps = state => ({
     email: state.user.email,
-    name: state.user.name
+    name: state.user.name,
+    loading: state.posts.isUploading
 })
 
 const mapDispatchToProps = dispatch => {

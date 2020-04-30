@@ -1,6 +1,8 @@
-import { SET_POSTS, ADD_COMMENT } from '../actionTypes'
+import { SET_POSTS, ADD_COMMENT, POST_CREATED, CREATING_POST } from '../actionTypes'
+
 const INITIAL_STATE = {
-    posts: []
+    posts: [],
+    isUploading: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -23,6 +25,16 @@ export default (state = INITIAL_STATE, action) => {
                     }
                     return post
                 })
+            }
+        case CREATING_POST:
+            return {
+                ...state,
+                isUploading: true
+            }
+        case POST_CREATED:
+            return {
+                ...state,
+                isUploading: false
             }
         default:
             return state

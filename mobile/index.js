@@ -5,7 +5,7 @@ import App from './App';
 import {name as appName} from './app.json';
 
 import axios from 'axios'
-
+axios.defaults.baseURL = 'https://cloneinstagram-afa2f.firebaseio.com/'
 
 import React from 'react'
 import { Provider } from 'react-redux'

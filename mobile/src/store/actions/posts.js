@@ -4,7 +4,7 @@ import axios from 'axios'
 export const addPost = post => {
 
     return dispatch => {
-        axios.post('https://cloneinstagram-afa2f.firebaseio.com/posts.json', {
+        axios.post('/posts.json', {
             ...post
         }).then(res => console.log(res)).catch(err => console.log(err))
     }

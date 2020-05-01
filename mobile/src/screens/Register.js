@@ -1,5 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
+import { connect } from 'react-redux'
+import { createUser } from '../store/actions/user'
 
 class Register extends React.Component{
     state = {
@@ -15,11 +17,13 @@ class Register extends React.Component{
                 value={this.state.name} onChangeText={name => this.setState({ name })} />
                 <TextInput keyboardType='email-address' placeholder='Email' style={styles.input} 
                 autoFocus={true}
-                value={this.state.name} onChangeText={email => this.setState({ email })} />
+                value={this.state.email} onChangeText={email => this.setState({ email })} />
                 <TextInput secureTextEntry={true} 
                 placeholder='Password' style={styles.input} autoFocus={true}
-                value={this.state.name} onChangeText={password => this.setState({ password })} />
-                <TouchableOpacity onPress={() => {}} style={styles.button}>
+                value={this.state.password} onChangeText={password => this.setState({ password })} />
+                <TouchableOpacity onPress={() => {
+                    this.props.onCreateUser(this.state)
+                }} style={styles.button}>
                     <Text style={styles.buttonText}>Salvar</Text>
                 </TouchableOpacity>
             </View>
@@ -53,4 +57,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Register
+const mapDispatchToProps = dispatch => {
+    return {
+        onCreateUser: user => dispatch(createUser(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Register)

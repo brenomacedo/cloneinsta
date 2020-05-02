@@ -7,6 +7,7 @@ import AddPhoto from './screens/AddPhoto'
 import Profile from './screens/Profile'
 import Login from './screens/Login'
 import Register from './screens/Register'
+import Splash from './screens/Splash'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
@@ -25,7 +26,7 @@ const SwitchComponent = () => (
     </Stack.Navigator>
 )
 
-export default () => (
+const TabNavigator = () => (
     <Tab.Navigator initialRouteName='Feed'
     tabBarOptions={{activeTintColor: '#037ffc', inactiveTintColor: '#c4c4c4', showLabel: false}}>
         <Tab.Screen options={{ tabBarIcon: ({ color }) => <Icon name='home' color={color} size={25} />}}
@@ -35,4 +36,11 @@ export default () => (
         <Tab.Screen options={{ tabBarIcon: ({ color }) => <Icon name='user' color={color} size={25} />}}
         name='Profile' component={SwitchComponent} />
     </Tab.Navigator>
+)
+
+export default () => (
+    <Stack.Navigator headerMode='none' initialRouteName='Splash'>
+        <Stack.Screen name='Splash' component={Splash} />
+        <Stack.Screen name='App' component={TabNavigator} />
+    </Stack.Navigator>
 )

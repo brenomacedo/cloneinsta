@@ -26,9 +26,9 @@ export const addPost = post => {
             }).then(res => {
                 dispatch(fetchPosts())
                 dispatch(postCreated())
-            }).catch(errr => dispatch(setMessage({
+            }).catch(err => dispatch(setMessage({
                 title: 'Erro!',
-                text: errr
+                text: err
             })))
         })
         
@@ -46,7 +46,7 @@ export const addComment = payload => {
         axios.get(`/posts/${payload.postId}.json`)
             .catch(err => dispatch(setMessage({
                 title: 'Erro!',
-                text: errr
+                text: err
             })))
             .then(resp => {
                 const comments = resp.data.comments || []
@@ -54,7 +54,7 @@ export const addComment = payload => {
                 axios.patch(`/posts/${payload.postId}.json`, { comments })
                     .catch(err => dispatch(setMessage({
                         title: 'Erro!',
-                        text: errr
+                        text: err
                     })))
                     .then(res => {
                         dispatch(fetchPosts())
@@ -80,7 +80,7 @@ export const fetchPosts = () => {
         axios.get('/posts.json')
             .catch(err => dispatch(setMessage({
                 title: 'Erro!',
-                text: errr
+                text: err
             })))
             .then(resp => {
                 const rawPosts = resp.data

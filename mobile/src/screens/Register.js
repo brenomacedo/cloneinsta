@@ -11,12 +11,6 @@ class Register extends React.Component{
     }
 
     componentDidUpdate = prevProps => {
-
-        this.setState({
-            name: '',
-            email: '',
-            password: ''
-        })
         if(prevProps.isLoading && !this.props.isLoading) {
             this.props.navigation.navigate('Profile')
         }
@@ -26,7 +20,7 @@ class Register extends React.Component{
         return (
             <View style={styles.container}>
                 <TextInput placeholder='Nome' style={styles.input} autoFocus={true}
-                value={this.state.name} onChangeText={name => this.setState({ name })} />
+                value={this.state.name} onChangeText={name => this.setState({ name }) } />
                 <TextInput keyboardType='email-address' placeholder='Email' style={styles.input} 
                 autoFocus={true}
                 value={this.state.email} onChangeText={email => this.setState({ email })} />

@@ -28,7 +28,7 @@ const SwitchComponent = () => (
 export default () => (
     <Tab.Navigator initialRouteName='Feed'
     tabBarOptions={{activeTintColor: '#037ffc', inactiveTintColor: '#c4c4c4', showLabel: false}}>
-        <Tab.Screen options={{ tabBarIcon: ({ color }) => <Icon name='user' color={color} size={25} />}}
+        <Tab.Screen options={{ tabBarIcon: ({ color }) => <Icon name='home' color={color} size={25} />}}
         name='Feed' component={Feed} />
         <Tab.Screen options={{ tabBarIcon: ({ color }) => <Icon name='camera' color={color} size={25} />}}
         name='AddPhoto' component={AddPhoto} />

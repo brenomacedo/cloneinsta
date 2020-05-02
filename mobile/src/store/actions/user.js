@@ -40,10 +40,7 @@ export const createUser = user => {
                     text: 'Ocorreu um erro inesperado!'
                 })))
                 .then(res => {
-                    delete user.password
-                    user.id = res.data.localId
-                    dispatch(userLogged(user))
-                    dispatch(userLoaded())
+                    dispatch(login(user))
                 })
             }
         })

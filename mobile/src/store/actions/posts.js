@@ -4,7 +4,7 @@ import { setMessage } from './message'
 
 export const addPost = post => {
 
-    return dispatch => {
+    return (dispatch, getState) => {
         dispatch(creatingPost())
         // https://us-central1-cloneinstagram-afa2f.cloudfunctions.net/uploadImage
 
@@ -21,7 +21,7 @@ export const addPost = post => {
         })))
         .then(resp => {
             post.image = resp.data.imageUrl
-            axios.post('/posts.json', {
+            axios.post(`/posts.json?auth=${getState().user.token}`, {
                 ...post
             }).then(res => {
                 dispatch(fetchPosts())
@@ -42,7 +42,7 @@ export const addPost = post => {
 
 export const addComment = payload => {
 
-    return dispatch => {
+    return (dispatch, getState) => {
         axios.get(`/posts/${payload.postId}.json`)
             .catch(err => dispatch(setMessage({
                 title: 'Erro!',
@@ -51,7 +51,7 @@ export const addComment = payload => {
             .then(resp => {
                 const comments = resp.data.comments || []
                 comments.push(payload.comment)
-                axios.patch(`/posts/${payload.postId}.json`, { comments })
+                axios.patch(`/posts/${payload.postId}.json?auth=${getState().user.token}`, { comments })
                     .catch(err => dispatch(setMessage({
                         title: 'Erro!',
                         text: err

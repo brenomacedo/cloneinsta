@@ -2,7 +2,8 @@ import { USER_LOGGED_OUT, USER_LOGGED_IN, USER_LOADED, LOADING_USER } from '../a
 const INITIAL_STATE = {
     name: null,
     email: null,
-    isLoading: false
+    isLoading: false,
+    token: null
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -11,13 +12,12 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 name: action.payload.name,
-                email: action.payload.email
+                email: action.payload.email,
+                token: action.payload.token
             }
         case USER_LOGGED_OUT:
             return {
-                ...state,
-                name: null,
-                email: null
+                ...INITIAL_STATE
             }
         case LOADING_USER:
             return {

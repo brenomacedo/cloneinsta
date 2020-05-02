@@ -73,6 +73,7 @@ export const login = user => {
         })))
         .then(res => {
             if( res.data.localId ) {
+                user.token = res.data.idToken
                 axios.get(`/users/${res.data.localId}.json`)
                     .catch(err => dispatch(setMessage({
                         title: 'Erro!',

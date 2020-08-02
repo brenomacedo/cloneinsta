@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 export default class Spash extends Component {
     componentDidMount = () => {
         setTimeout(() => {
-            this.props.navigation.navigate('App')
+            this.props.navigation.replace("App")
         }, 2000)
     }
 
@@ -12,7 +12,6 @@ export default class Spash extends Component {
         return (
             <View style={styles.container}>
                 <Image source={require('../../assets/imgs/icon.png')} style={styles.image} />
-                <Text style={styles.header} >Felix Felix</Text>
             </View>
         )
     }
